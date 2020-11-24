@@ -18,7 +18,7 @@ jobs:
 
     runs-on: ubuntu-latest
     env:
-      DISCORD_WEBHOOK: https://discordapp.com/api/webhooks/749248799347703858/LORKpdpY_PS81rqsw0twQJvV5Lcjnc1TkA_8Ncs4d4egDT9EBfNvy1jqFG-zgitTPkNP
+      DISCORD_WEBHOOK: https://discordapp.com/api/webhooks/780890438361153566/dhdWuoj1RDuVFy3krVKudrHOm4-sXhCyAPNxqg4h2L0f3Zu__lCD_OvCohuGXCfa8BYO
     steps:
     - uses: actions/checkout@v2
     - name: Set up Ruby
@@ -51,14 +51,6 @@ jobs:
         build_dir: tmp/rubycritic/
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    - name: Merge to release
-      if: ${{ success() }}
-      uses: devmasx/merge-branch@v1.1.0
-      with:
-        type: now
-        target_branch: 'release'
-      env:
-        GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
     - name: Discord notification
       if: ${{ success() }}
       uses: Ilshidur/action-discord@759f6ea4dc493b8bd1bb35ae7fbd7ae10fcea129
